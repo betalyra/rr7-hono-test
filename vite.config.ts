@@ -17,7 +17,7 @@ export default defineConfig(({ command, isSsrBuild }) => ({
   // },
   plugins: [
     tailwindcss(),
-    reactRouterHonoServer({ runtime: "aws", dev: { export: "handler" } }), // add this
+    reactRouterHonoServer({ runtime: "node" }), // add this
     reactRouter(),
     tsconfigPaths(),
     topLevelAwait(),
