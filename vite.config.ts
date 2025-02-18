@@ -3,7 +3,14 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, isSsrBuild }) => ({
+  build: {
+    rollupOptions: isSsrBuild
+      ? {
+          input: "./server/app.ts",
+        }
+      : undefined,
+  },
   ssr: {
     noExternal: command === "build" ? true : undefined,
   },
