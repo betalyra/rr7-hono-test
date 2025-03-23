@@ -15,11 +15,12 @@ const app = new Hono();
 // Add any additional Hono middleware here
 
 const handler = createRequestHandler(build);
-app.mount("/", (req: Request) =>
-  handler(req, {
+app.mount("/", (req: Request) => {
+  console.log(`req`, req);
+  return handler(req, {
     // Add your "load context" here based on the current request
     VALUE_FROM_HONO: "Hello from Hono",
-  })
-);
+  });
+});
 
 export default app.fetch;
